@@ -4,6 +4,8 @@ import connections from "./db/dbConnection.js";
 import initializeTable from "./db/tableInitialization.js";
 import authRouter from "./routes/authRoutes.js";
 import {config} from "dotenv";
+import adminRouter from "./routes/adminRoutes.js";
+import locationRoute from "./routes/locationRoutes.js";
 
 config();
 const app = express();
@@ -22,6 +24,8 @@ app.get('/', async (req, res) => {
 });
 
 app.use("/auth",authRouter);
+app.use("/admin",adminRouter);
+app.use("/location",locationRoute);
 
 
 

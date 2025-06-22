@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS attendance (
     id SERIAL PRIMARY KEY,
-    user_id INTEGER REFERENCES users(id),
+    user_id BIGINT REFERENCES users(id),
     entrytime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );

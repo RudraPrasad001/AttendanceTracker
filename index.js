@@ -33,7 +33,6 @@ cron.schedule('59 23 * * *',()=>{
   console.log("Checking Attendance Notice");
   handleAttendance();
 })
-handleAttendance();
 
 
 app.listen(3000,()=>{console.log("Server is Running on Port 3000")})

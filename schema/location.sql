@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS location (
+    user_id BIGINT REFERENCES users(id),
+    longitude DECIMAL(10,4) NOT NULL,
+    latitude DECIMAL(10,4) NOT NULL,
+    locatedtime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+)

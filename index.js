@@ -6,6 +6,8 @@ import authRouter from "./routes/authRoutes.js";
 import {config} from "dotenv";
 import adminRouter from "./routes/adminRoutes.js";
 import locationRoute from "./routes/locationRoutes.js";
+import handleAttendance from "./hooks/useHandleAttendtance.js";
+import cron from 'node-cron';
 
 config();
 const app = express();
@@ -27,6 +29,10 @@ app.use("/auth",authRouter);
 app.use("/admin",adminRouter);
 app.use("/location",locationRoute);
 
+cron.schedule('59 23 * * *',()=>{
+  console.log("Checking Attendance Notice");
+  handleAttendance();
+})
 
 
 app.listen(3000,()=>{console.log("Server is Running on Port 3000")})

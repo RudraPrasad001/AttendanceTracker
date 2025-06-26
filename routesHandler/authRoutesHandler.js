@@ -43,7 +43,10 @@ const loginHandler = async(req,res)=>{
     else{
     const isCorrect = bcrypt.compareSync(data.password,password);
     if(isCorrect){
-       return res.json({message:"welcome user"});
+
+       let userResult = await connections.query(`select id,name from users where id=${data.phone}`);
+        let user = userResult.rows[0];
+       return res.json({message:"welcome user",user:{id:user.id,name:user.name}});
     }
     res.json({message:"Phone or Password Invalid"});}
 
